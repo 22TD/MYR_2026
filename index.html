@@ -545,6 +545,19 @@
             transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
         .landfall .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
+        .landfall .cta.secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5); }
+        .landfall .cta.secondary:hover { background: rgba(255,255,255,0.08); }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 6px; }
+
+        /* lightbox modal */
+        .lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(2,12,32,0.82); backdrop-filter: blur(4px); }
+        .lightbox.open { display: flex; }
+        .lightbox-inner { background: #fff; border-radius: 16px; padding: 16px; max-width: 920px; width: 100%; max-height: 90vh; overflow: auto; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+        .lightbox-inner img { width: 100%; height: auto; border-radius: 10px; display: block; }
+        .lightbox-bar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; padding: 14px 6px 4px; }
+        .lightbox-bar .lb-btn { font-weight: 600; padding: 12px 26px; border-radius: 30px; text-decoration: none; cursor: pointer; border: none; font-size: 0.95rem; }
+        .lightbox-bar .lb-btn.dl { background: var(--ocean-dark); color: #fff; }
+        .lightbox-bar .lb-btn.close { background: #eef2f5; color: var(--ocean-dark); }
         .landfall .sign { margin-top: 2.6rem; font-size: 0.85rem; letter-spacing: 1px; opacity: 0.7; }
         .landfall-waves { position: absolute; top: -2px; left: 0; width: 100%; height: 90px; transform: scaleY(-1); pointer-events: none; }
         .landfall-waves svg { width: 100%; height: 100%; display: block; }
@@ -683,18 +696,21 @@
                     <div class="content-card">
                         <h3>Core Achievement 1:<br>Strengthening Regional Governance</h3>
                         <h4>What exactly was achieved?</h4>
+                        <p><strong>PPHSN Governance Review and Renewal.</strong></p>
                         <ul>
-                            <li>PPHSN Governance Review and Renewal.</li>
                             <li>PPHSN Strategic framework 2026–2035 development.</li>
                             <li>EpiNet strengthening and ToR update.</li>
                             <li>First time convening a One Health TWG (POSW) with both animal &amp; human health.</li>
                             <li>Combined PacMOSSI/PVN 2026 Annual Meetings (9–11 June 2026).</li>
+                            <li>28th PPHSN-CB Meeting Convened — 26–27 March 2026.</li>
                         </ul>
                         <h4>Governance Metrics &amp; Impact</h4>
                         <ul>
                             <li><strong>18 PICTs and partners</strong> brought together across 4 meetings.</li>
                             <li>Endorsement of the Regional EpiNet (REpiNet) Concept.</li>
                             <li>PPHSN and its 7 service networks are fully operational, shifting from national-focus to a regional response capacity.</li>
+                            <li>Expanding PPHSN member partnership.</li>
+                            <li>Consultation and preparation for the celebration of the 30th anniversary of PPHSN.</li>
                         </ul>
                     </div>
                 </div>
@@ -728,6 +744,7 @@
                             <li><strong>French Polynesia PGCFE:</strong> Module 4 (16 participants), Module 5 (15 participants).</li>
                             <li><strong>Cook Islands PGCFE:</strong> Module 5 (13 participants).</li>
                             <li><strong>Regional PGDAE:</strong> 14 participants from 8 PICTs.</li>
+                            <li><strong>RCCE:</strong> 16 participants from 5 USAPIs.</li>
                         </ul>
                         <p><strong>Broader Impact:</strong> Ability to detect, assess and respond to Public Health threats strengthened.</p>
                     </div>
@@ -751,8 +768,8 @@
                     <div class="content-card green">
                         <h3>Core Achievement 3:<br>Strengthening Early Warning Systems</h3>
                         <h4>What was achieved?</h4>
+                        <p><strong>Integrating climate information into predictive models.</strong></p>
                         <ul>
-                            <li>Integrating climate information into predictive models.</li>
                             <li>Development of the <strong>Leptospirosis Dashboard</strong> (prototype for surveillance and early warning).</li>
                             <li>Active in Fiji, New Caledonia, Wallis and Futuna, and French Polynesia.</li>
                             <li>Displays climate and leptospirosis cases with predictions for the next 3 months via gauge visualisation.</li>
@@ -827,9 +844,41 @@
             </div>
         </div>
 
-        <a class="cta lf-reveal" href="PPHSN_Success_Stories.html">Read our success stories &#8594;</a>
+        <div class="cta-row lf-reveal">
+            <a class="cta" href="PPHSN_Success_Stories.html">Read our success stories &#8594;</a>
+            <a class="cta secondary" href="https://github.com/22TD/MYR_2026/raw/main/Celebrations-and-Milestones%20(1).pptx" download>Download the Celebrations &amp; Milestones deck &#8595;</a>
+            <button class="cta secondary" type="button" onclick="openEvolutionLightbox()">View Evolution &amp; Growth &#43;</button>
+        </div>
         <div class="sign lf-reveal">SPRP Team · Public Health Division · The Pacific Community (SPC)</div>
     </section>
+
+    <!-- Lightbox for Evolution &amp; Growth image + associated deck -->
+    <div class="lightbox" id="evolution-lightbox" role="dialog" aria-modal="true" aria-label="Evolution and Growth of PPHSN">
+        <div class="lightbox-inner">
+            <img src="https://raw.githubusercontent.com/22TD/MYR_2026/main/Gemini_Generated_Image_qlndzaqlndzaqlnd.png" alt="Evolution and Growth — Sustainability of PPHSN">
+            <div class="lightbox-bar">
+                <a class="lb-btn dl" href="https://github.com/22TD/MYR_2026/raw/main/Evolution-and-Growth-Sustainability-of-PPHSN.pptx" download>Download the deck &#8595;</a>
+                <button class="lb-btn close" type="button" onclick="closeEvolutionLightbox()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openEvolutionLightbox() {
+            var lb = document.getElementById('evolution-lightbox');
+            if (lb) { lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        }
+        function closeEvolutionLightbox() {
+            var lb = document.getElementById('evolution-lightbox');
+            if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+        }
+        (function () {
+            var lb = document.getElementById('evolution-lightbox');
+            if (!lb) return;
+            lb.addEventListener('click', function (e) { if (e.target === lb) closeEvolutionLightbox(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeEvolutionLightbox(); });
+        })();
+    </script>
 
     <!-- SCRIPTS -->
     <script>
